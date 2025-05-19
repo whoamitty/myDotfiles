@@ -1,0 +1,43 @@
+#Source https://lord.re/posts/250-meilleure-config-mpv-2024/
+
+#hwdec=auto-safe
+#hr-seek=yes
+
+# =====CONFIG AUDIO=====
+volume-max=600                                     # possibilité de booster le son au-delà du max
+audio-channels=stereo                              # Forcer la sortie en stéréo
+af=lavfi=[pan=stereo|c0=FC+LFE+FL+BL+SL|c1=FC+LFE+FR+BR+SR,dynaudnorm=g=3:f=250:r=0.9:p=0.9:m=10] # Normalisation du volume et passage en stéréo
+
+
+
+# =====CONFIG SUBS======
+sub-color=1/1/1/0.9                                # Blanc légèrement transparent pour le sub
+sub-border-color=0/0/0/0.9                         # Avec un contour noir légèrement transparent
+sub-border-size=2                                  # De petite taille
+sub-shadow-offset=1                                # Et une légère ombre portée
+sub-blur=0.1                                       # Et bien entendu un peu blurrée
+sub-shadow-color=0.4/0.4/0.4/0.7                   # grise mais elle aussi transparente
+sub-font='Noto Sans'                               # Soyons fou
+
+
+# =====CONFIG POUR YOUTUBE=====
+ytdl-format=bestvideo[height<=1080]+bestaudio/best # Se limiter au HD maximum
+
+
+# =====CONFIG POUR STREAMS=====
+[stream]
+# Profil minimisant au max la latence. Utiliser avec mpv --profile=stream
+cache=no
+demuxer-lavf-o-add="fflags=+nobuffer+fastseek+flush_packets"
+deband=no
+dither-depth=no
+scale=bilinear
+cscale=bilinear
+dscale=bilinear
+scale-antiring=0
+cscale-antiring=0
+dither-depth=no
+correct-downscaling=no
+sigmoid-upscaling=no
+
+

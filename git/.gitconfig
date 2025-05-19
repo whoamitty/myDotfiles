@@ -1,0 +1,10 @@
+[user]
+	email = whoamitty.pro+gh@gmail.com
+	name = whoamitty
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = /home/enfantdedieu/.gitignore
+	editor = vim
+[commit]
+	template = /home/enfantdedieu/.git_commit_template.txt
