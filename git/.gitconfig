@@ -4,7 +4,7 @@
 [init]
 	defaultBranch = main
 [core]
-	excludesfile = /home/enfantdedieu/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 [commit]
-	template = /home/enfantdedieu/.git_commit_template.txt
+	template = ~/.git_commit_template.txt
