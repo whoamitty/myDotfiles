@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+find . ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -dD | grep -i -v -E "avvat|__history" | awk '
+  BEGIN {
+    srand();
+    for (i = 0; i < 256; i++) {
+      colors[i] = sprintf("\033[38;5;%dm", int(rand() * 256));
+    }
+  }
+  {
+    if (!($1 in seen)) {
+      seen[$1] = 1;
+      color = colors[NR % 256];
+    }
+    printf "%s%s %s\033[0m\n", color, $0, color;
+  }'
+
+
+

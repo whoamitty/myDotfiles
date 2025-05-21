@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+for i in apache2 mysql; do sudo service $i stop ;done

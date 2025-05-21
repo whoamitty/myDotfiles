@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+PATH="$HOME/bin/mshellcheck" 
+LANG=bash
+
+echo  '#!/usr/bin/bash' > $PATH/temp$LANG
+
+echo $@ >> $PATH/temp$LANG
+
+/usr/bin/shellcheck $PATH/temp$LANG

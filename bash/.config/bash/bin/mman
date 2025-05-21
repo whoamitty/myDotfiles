@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+#echo "dirname : [$(dirname "$0")]"
+#readlink -f -- "$0";
+
+#echo "dirname : [$(dirname "$(readlink -f -- "$0")")]"
+
+#pwd
+
+#echo $PWD
+
+#exit
+
+# directory_of_parent_process=
+# source_directory_of_mman=$HOME/bin/dirmman
+# executables_directory
+
+source_directory_of_mman=$(dirname "$(readlink -f -- "$0")")
+#directory_of_personal_scripts=$HOME/bin
+
+
+# assign a value to the variable  $directory_of_personal_manuals
+# for executables_directory too
+source "${source_directory_of_mman}"/directory_of_personal_manuals.sh
+
+directory_of_personal_scripts(){
+    dirname "$(readlink -f -- $(which "$1") )"
+}
+
+path_of_personal_scripts(){
+    readlink -f -- $(type -P "$1")
+}
+
+case $1 in
+    # THIS LINES DOES NOT WORKS
+	# -cm) cd ${directory_of_personal_manuals}/"$2";;  # Go to manual directory
+	
+    # -cx) cd $(dirname "$(readlink -f -- "$(type -P $2)" )" ;; # Go to script directory
+	# -cx) cd $(directory_of_personal_scripts "$2" ) || exit ;; # Go to script directory
+
+    # -cx) cd ${directory_of_personal_scripts}/"$2";; # Go to script directory
+
+	-m) cat ${directory_of_personal_manuals}/"$2";;
+	-mm) vim ${directory_of_personal_manuals}/"$2";;
+	-x) cat ${executables_directory}/"$2";;
+	-xx) vim ${executables_directory}/$2;;
+	-l) ls --color=yes ${directory_of_personal_manuals}/"$2";;  #display the list of personal manual  	
+	-lm) ls --color=yes ${directory_of_personal_manuals}/"$2";;
+	-lx) ls --color=yes ${executables_directory}/"$2";;  #display the list of personal scripts
+	-p) echo ${directory_of_personal_manuals}/"$2";;       #show mman's folder path
+	-pm) echo ${directory_of_personal_manuals}/"$2";;
+	-px) echo ${executables_directory}/$2;;
+    
+
+
+#	*) cat $directory_of_personal_manuals/$1;;	
+	
+		
+esac
+

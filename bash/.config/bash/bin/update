@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+tmp=/temp/perso
+
+echo update discord
+update-discord
+
+# lazygit
+# LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+# curl -Lo $tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+# tar xf lazygit.tar.gz lazygit
+# sudo install lazygit /usr/local/bin
+# rm -r lazygit  lazygit.tar.gz
+
+echo update rstup; sleep 3
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+echo update docker; sleep 3
+curl -fsSL "https://get.docker.com/" | sh
+
+
+apt update
+apt upgrade
+
+flatpak update

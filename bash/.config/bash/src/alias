@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+alias rgf='rg --files | rg'
+alias lsd='ls -d hours* ; ls -dr days* ; ls -dr weeks* ; ls -dr months*'
+alias lsd1='( ls -dr1  hours* ; ls -dr1 days* ; ls -dr1 weeks* ; ls -dr1 months* ) 2> /dev/null'
+alias ls+='( ls -d *+ && ls -d *.git ) 2> /dev/null'
+alias ytvideo="yt-dlp --embed-metadata --embed-subs --write-auto-subs --sub-langs fr --sub-format vtt"
+alias yt='googler "site:youtube.com"'
+
+#https://unix.stackexchange.com/a/119650 all in /dev/null
+alias open="xdg-open > /dev/null 2>&1"
+alias o="open"
+alias v="vim"
+
+#https://stackoverflow.com/a/12293994 get path of current git repo
+alias findg='find $(git rev-parse --show-toplevel) -not -path "*/\.git/*"'
+alias formmd="sed -E '/^$/!s/([0-9a-zA-Z[:punct:]]+)( )?$/\1  /'"
+
+#tree that ignore .git forlder src:https://superuser.com/a/772574
+alias tree="tree -I .git"
+
+#https://tamerlan.dev/how-i-manage-my-dotfiles-using-gnu-stow/
+alias stowup="stow -D * && stow *"
+alias g='cd "$(git rev-parse --show-toplevel)"'
+
+alias tobligation='tmux new -s "obligation" ;  tmux new-window \
+                                   -t obligation:1 -n "reflexion" "cd ~/git-source/me+/store+/reflexions_store.git/learning+ ; $SHELL" \
+                                   -t obligation:2 -n "work" ; $SHELL'   
+alias tproject=''
+alias tentertainment=''
+

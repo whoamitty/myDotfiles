@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#set -o xtrace
+#set -o verbose
+
+GIT_URL=$(git config --local remote.origin.url | cut -d "@" -f 2 | cut -d "." -f "1-2" | sed "s/:/\//")
+URL="https://${GIT_URL}"
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+SHA=$(git rev-parse HEAD)
+
+format_url(){
+
+	URL_normal="$URL/blob/$BRANCH/$FILE"
+	URL_permanent="$URL/blob/$SHA/$FILE"
+
+	[ "$1" == md ] &&
+		
+		URL_normal="[${FILE}](${URL_normal})" &&
+		URL_permanent="[${FILE}](${URL_permanent})"
+}
+case $1 in
+	--help)
+		echo "Usage: ghlink-for-file <file>"
+		exit 0
+		;;
+
+
+	
+	-en) 
+		link="Link"
+		permalink="Permalink"
+		FILE=$2
+		format_url
+		;;
+	
+	
+	--md)
+                link="Lien normal"
+                permalink="Lien permanent"
+		FILE=$2
+		format_url md
+		;;
+
+ 	 *)
+                link="Lien normal"
+                permalink="Lien permanent"
+                FILE=$1
+		format_url
+		;;
+
+esac
+
+echo -e "$link\n$URL_normal\n"
+echo -e "$permalink\n$URL_permanent"
+
+
+
+exit 0

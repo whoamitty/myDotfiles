@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+screenkey -p fixed -g 30%x10%+70%+10%
